@@ -1,13 +1,18 @@
 from rest_framework.viewsets import ModelViewSet
-from .models import ChecklistMaquinaria
-from .serializers import ChecklistSerializer
+from .models import Tractor, Operador, ChecklistMaquinaria
+from .serializers import TractorSerializer, OperadorSerializer, ChecklistSerializer
+
+
+class TractorViewSet(ModelViewSet):
+    queryset = Tractor.objects.all()
+    serializer_class = TractorSerializer
+
+
+class OperadorViewSet(ModelViewSet):
+    queryset = Operador.objects.all()
+    serializer_class = OperadorSerializer
+
 
 class ChecklistViewSet(ModelViewSet):
-    """
-    Controlador de la API.
-    Permite realizar operaciones CRUD:
-    Crear, Leer, Actualizar y Eliminar checklists.
-    """
-
     queryset = ChecklistMaquinaria.objects.all()
     serializer_class = ChecklistSerializer
